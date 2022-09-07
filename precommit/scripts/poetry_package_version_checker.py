@@ -58,7 +58,7 @@ def check_version(config_path: Optional[Path] = None) -> bool:
     if package_version != version:
         logger.warning(f"version is not match, config version: {version}, package version: {package_version}")
         return False
-
+    logger.debug(f"config version: {version}, package version: {package_version}")
     return True
 
 
