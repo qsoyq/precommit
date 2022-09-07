@@ -1,5 +1,7 @@
 import importlib
+import importlib.util
 import logging
+import sys
 
 from pathlib import Path
 from typing import Optional
@@ -45,6 +47,23 @@ def check_version(config_path: Optional[Path] = None) -> bool:
         logger.warning("name or version is not found in pyproject.toml")
         return False
     try:
+        module_path = Path(f'{name}/__init__.py')
+        if not module_path.exists():
+            logger.warning(f"can't find moudle __init__ file, module path: {module_path.absolute()}")
+            return False
+
+        spec = importlib.util.spec_from_file_location(name, module_path.absolute())
+        if spec is None:
+            logger.warning(f"can't find moudle __init__ file, module path: {module_path.absolute()}")
+            return False
+
+        if spec.loader is None:
+            logger.warning(f"spec.loader is None, module path: {module_path.absolute()}")
+            return False
+
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
+        spec.loader.exec_module(module)
         module = importlib.import_module(f"{name}")
     except ImportError:
         logger.warning("can't import module", exc_info=True)

@@ -17,7 +17,7 @@ pre-commit:
 	@pre-commit run --all-file
 
 mypy:
-	@mypy .
+	@mypy precommit
 
 build:
 	docker build --platform linux/amd64 -t $(IMAGE_NAME) .
