@@ -31,7 +31,7 @@ def check_version(config_path: Optional[Path] = None) -> bool:
     if config_path is None:
         config_path = Path('pyproject.toml')
 
-    if not config_path.exists:
+    if not config_path.exists():
         logger.warning(f"{config_path.absolute()} is not exists.")
         return False
 
