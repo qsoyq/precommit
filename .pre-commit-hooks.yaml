@@ -2,6 +2,7 @@
   name: check-poetry-package-version
   description: "compare project version with package version."
   entry: check-poetry-package-version
+  always_run: true
   language: python
   language_version: python3
   types: [python]
