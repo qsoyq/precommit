@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "precommit"
-version = "0.0.3"
+version = "0.0.4"
 description = "my precommit hooks"
 authors = ["wangqs <wqs1639@gmail.com>"]
 
