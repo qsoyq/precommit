@@ -1,9 +1,11 @@
-- id: check-poetry-package-version
-  name: check-poetry-package-version
-  description: "compare project version with package version."
-  entry: check-poetry-package-version
+- id: check-stash-override-format
+  name: check-stash-override-format
+  description: "Format the override files in Stash."
+  entry: check-stash-override-format
   always_run: true
   pass_filenames: false
+  fail_fast: true
+  verbose: true
   language: python
   language_version: python3
   types: [python]
